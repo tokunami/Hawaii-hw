@@ -53,12 +53,12 @@ def welcome():
 @app.route("/api/v1.0/preceipitation")
 def preceipitiation():
     # Query 
-    results = session.query(Mea.date, Mea.tobs).filter(Mea.date > '2016-12-31', Mea.date < '2018-01-01').order_by(Mea.date).all()
+    results = session.query(Mea.date, Mea.prcp).filter(Mea.date > '2016-12-31', Mea.date < '2018-01-01').order_by(Mea.date).all()
     all_results = []
     for result in results:
         result_dict = {}
         result_dict["date"] = result.date
-        result_dict["tobs"] = result.tobs
+        result_dict["prcp"] = result.prcp
         all_results.append(result_dict)
 
     return jsonify(all_results)
